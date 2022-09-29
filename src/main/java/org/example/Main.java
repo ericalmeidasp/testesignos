@@ -3,6 +3,7 @@ package org.example;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -11,6 +12,7 @@ import java.util.function.Supplier;
 public class Main {
 
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    public static final DateTimeFormatter FORMATTER_SIGNO = DateTimeFormatter.ofPattern("dd/MM");
 
     public static void main(String[] args) {
         System.out.println("SIGNOS");
@@ -44,6 +46,8 @@ public class Main {
         aniversarios.add(LocalDateTime.of(1996, 5, 3, 19, 30));
 
 
+        System.out.println();
+        System.out.println("DATA FORMATADA");
         System.out.println("CLASSE ANONIMA");
 
         aniversarios.forEach(new Consumer<LocalDateTime>() {
@@ -57,12 +61,13 @@ public class Main {
 
         aniversarios.forEach((aniversario) -> System.out.println(aniversario.format(FORMATTER)));
 
-
         System.out.println("CONVENCIONAL");
 
         formatConvencional(aniversarios);
 
+        System.out.println();
         System.out.println("GERAÇÃO Z");
+        System.out.println("CLASSE ANONIMA");
 
         Predicate<LocalDateTime> informarGeracao = new Predicate<LocalDateTime>() {
             @Override
@@ -85,6 +90,68 @@ public class Main {
 
         selecionaNovaGeracao(aniversarios);
 
+        System.out.println();
+        System.out.println("SUPPLIER PARA SIGNOS");
+        System.out.println("CLASSE ANONIMA");
+
+        Supplier<Signos[]> listarSignos = new Supplier<Signos[]>() {
+            @Override
+            public Signos[] get() {
+                return Signos.values();
+            }
+        };
+
+        for (int i = 0; i < listarSignos.get().length; i++) {
+            System.out.println("NOME: " + listarSignos.get()[i] + " DATA INICIAL: " + listarSignos.get()[i].getInitDate().format(FORMATTER_SIGNO) +
+                    "  --  DATA FINAL: " + listarSignos.get()[i].getLastDate().format(FORMATTER_SIGNO));
+        }
+
+        System.out.println("LAMBDA");
+
+        Supplier<Signos[]> listarSignosLambda = () -> Signos.values();
+
+
+        for (int i = 0; i < listarSignosLambda.get().length; i++) {
+            System.out.println("NOME: " + listarSignosLambda.get()[i] + " DATA INICIAL: " + listarSignosLambda.get()[i].getInitDate().format(FORMATTER_SIGNO) +
+                    "  --  DATA FINAL: " + listarSignosLambda.get()[i].getLastDate().format(FORMATTER_SIGNO));
+        }
+
+        System.out.println("CONVENCIONAL");
+
+        imprimirSignos();
+
+        System.out.println();
+        System.out.println("ORDENAR DATA DE NASCIMENTO DO GRUPO");
+        // System.out.println("CLASSE ANONIMA");
+
+        aniversarios.sort(new Comparator<LocalDateTime>() {
+            @Override
+            public int compare(LocalDateTime o1, LocalDateTime o2) {
+                if (o1.isAfter(o2)) {
+                    return 1;
+                } else if (o1.isBefore(o2)) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+
+        // System.out.println("LAMBDA");
+
+        aniversarios.sort((o1, o2) -> {
+            if (o1.isAfter(o2)) {
+                return 1;
+            } else if (o1.isBefore(o2)) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+
+
+        aniversarios.forEach((aniversario) -> System.out.println(aniversario.format(FORMATTER)));
+
 
     }
 
@@ -94,29 +161,28 @@ public class Main {
         }
     }
 
-    public static void selecionaNovaGeracao(List<LocalDateTime> lista) {
-        for (LocalDateTime aniversario : lista) {
-            boolean novaG = aniversario.getYear() >= 1995 && aniversario.getYear() <= 2010;
-            System.out.println("É DA GERAÇÃO Z?  " + novaG);
+    public static void selecionaNovaGeracao(List<LocalDateTime> listaAniversario) {
+        for (LocalDateTime aniversario : listaAniversario) {
+            boolean novaGeracao = aniversario.getYear() >= 1995 && aniversario.getYear() <= 2010;
+            System.out.println("É DA GERAÇÃO Z?  " + novaGeracao);
         }
     }
 
-    Supplier<Signos[]> listarSignos = new Supplier<Signos[]>() {
-        @Override
-        public Signos[] get() {
-            return Signos.values();
+    public static void imprimirSignos() {
+        for (Signos signo : Signos.values()) {
+            System.out.println("NOME: " + signo + " DATA INICIAL: " + signo.getInitDate().format(FORMATTER_SIGNO) +
+                    "  --  DATA FINAL: " + signo.getLastDate().format(FORMATTER_SIGNO));
         }
-    };
-
+    }
 
 }
 
-//- Consumer para data formatada (dd/MM/yyyy HH:mm:ss)
+// - Consumer para data formatada (dd/MM/yyyy HH:mm:ss)
 // - Predicate para informar se a pessoa é da geração Z (nasceu entre 1995 e 2010)
-//            - Supplier para informar os signos com as datas
-//          - Ordernar datas de nascimento do grupo com o comparator
+// - Supplier para informar os signos com as datas
+// - Ordernar datas de nascimento do grupo com o comparator
 
-//   - Consumer, Predicate e  Supplier em três formas:
-//   - Convencional
-//        - Com classe anônima
-//  - Com lambda
+// - Consumer, Predicate e  Supplier em três formas:
+// - Convencional
+// - Com classe anônima
+// - Com lambda

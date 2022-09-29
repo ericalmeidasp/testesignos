@@ -42,4 +42,5 @@ public enum Signos {
             }
         }).findFirst().orElseThrow(SignoNaoEncontradoException::new);
     }
+
 }
