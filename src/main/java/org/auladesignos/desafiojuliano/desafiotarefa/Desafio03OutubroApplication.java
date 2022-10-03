@@ -32,16 +32,16 @@ public class Desafio03OutubroApplication {
 
         System.out.println("=========================");
 
-        System.out.println("PESSOAS POR SIGNOS");
+        System.out.println("PESSOAS POR SIGNOS E IDADE MAIOR QUE (TOURO, 20)");
         pessoasPorSignoEidade.forEach(System.out::println);
         System.out.println();
-        System.out.println("PESSOAS MAIORES DE IDADE");
+        System.out.println("PESSOAS MAIORES DE 18 ANOS DE IDADE");
         pessoaMaiorMenorIdade.getMaioresDeIdade().forEach(System.out::println);
         System.out.println();
-        System.out.println("PESSOAS MENORES DE IDADE");
+        System.out.println("PESSOAS MENORES DE 18 ANOS DE IDADE");
         pessoaMaiorMenorIdade.getMenoresDeIdade().forEach(System.out::println);
         System.out.println();
-        System.out.println("PESSOAS POR GERACAO");
+        System.out.println("PESSOAS POR GERACAO (Y)");
         pessoasPorGeracao.forEach(System.out::println);
         System.out.println();
         System.out.println("PESSOAS MAIS VELHA");
@@ -50,13 +50,13 @@ public class Desafio03OutubroApplication {
         System.out.println("PESSOAS MAIS NOVA");
         System.out.println(pessoaMaisVelhoMaisNovo.getMaisNovo());
         System.out.println();
-        System.out.println("PESSOAS IDADE PROX COPA DO MUNDO");
+        System.out.println("PESSOAS - IDADE PROX COPA DO MUNDO (2026 - JULHO)");
         pessoasIdadeProximaCopaDoMundo.forEach(System.out::println);
         System.out.println();
-        System.out.println("PESSOAS IDADE MEDIA");
+        System.out.println("PESSOAS - IDADE MEDIA");
         System.out.println(pessoasIdadeMediaIdadeTotal.getIdadeMedia());
         System.out.println();
-        System.out.println("PESSOAS IDADE TOTAL");
+        System.out.println("PESSOAS - IDADE TOTAL");
         System.out.println(pessoasIdadeMediaIdadeTotal.getIdadeTotal());
 
     }
@@ -119,13 +119,13 @@ public class Desafio03OutubroApplication {
         Double mediaIdade = grupoItalia.stream()
                 .mapToInt(Pessoa::getIdade)
                 .average()
-                .orElse(0);
+                .orElse(-1);
 
 
         Integer totalIdade = grupoItalia.stream()
                 .mapToInt(Pessoa::getIdade)
                 .reduce((acc, op) -> acc + op)
-                .orElse(0);
+                .orElse(-1);
 
         return new PessoasIdadeMediaIdadeTotal(mediaIdade.intValue(), totalIdade);
     }
