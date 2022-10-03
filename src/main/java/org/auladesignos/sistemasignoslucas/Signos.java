@@ -1,4 +1,6 @@
-package org.example;
+package org.auladesignos.sistemasignoslucas;
+
+import org.auladesignos.sistemasignoslucas.exceptions.SignoNaoEncontradoException;
 
 import java.time.MonthDay;
 import java.util.Arrays;

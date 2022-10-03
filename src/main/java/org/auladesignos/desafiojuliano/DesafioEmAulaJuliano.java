@@ -1,6 +1,8 @@
-package org.example;
+package org.auladesignos.desafiojuliano;
 
-import java.time.*;
+import org.auladesignos.sistemasignoslucas.Signos;
+
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -9,35 +11,26 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class Main {
+// - Consumer para data formatada (dd/MM/yyyy HH:mm:ss)
+// - Predicate para informar se a pessoa é da geração Z (nasceu entre 1995 e 2010)
+// - Supplier para informar os signos com as datas
+// - Ordernar datas de nascimento do grupo com o comparator
+
+// - Consumer, Predicate e  Supplier em três formas:
+// - Convencional
+// - Com classe anônima
+// - Com lambda
+
+public class DesafioEmAulaJuliano {
 
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
     public static final DateTimeFormatter FORMATTER_SIGNO = DateTimeFormatter.ofPattern("dd/MM");
 
     public static void main(String[] args) {
-        System.out.println("SIGNOS");
-        System.out.println();
-
-        LocalDateTime localDateTimeLucas = LocalDateTime.of(1993, 5, 11, 12, 30);
-
-        System.out.println("IDADE DO LUCAS: ");
-        Period period = Period.between(localDateTimeLucas.toLocalDate(), LocalDate.now());
-        System.out.println(period.getYears() + " ANOS");
-
-        System.out.println();
-
-        System.out.println("SIGNO DO LUCAS: ");
-        System.out.println(Signos.getSigno(MonthDay.of(localDateTimeLucas.getMonth(), localDateTimeLucas.getDayOfMonth())));
-
-        System.out.println();
-
-        System.out.println("NASCEU EM ANO BISSEXTO: ");
-        System.out.println(Year.isLeap(localDateTimeLucas.getYear()));
 
         System.out.println("================= 29-09 ==============");
 
         List<LocalDateTime> aniversarios = new ArrayList<>();
-        aniversarios.add(localDateTimeLucas);
         aniversarios.add(LocalDateTime.of(1994, 10, 1, 1, 30));
         aniversarios.add(LocalDateTime.of(1972, 12, 20, 1, 24));
         aniversarios.add(LocalDateTime.of(1992, 10, 29, 8, 12));
@@ -122,8 +115,8 @@ public class Main {
 
         System.out.println();
         System.out.println("ORDENAR DATA DE NASCIMENTO DO GRUPO");
-        // System.out.println("CLASSE ANONIMA");
 
+        // System.out.println("CLASSE ANONIMA");
         aniversarios.sort(new Comparator<LocalDateTime>() {
             @Override
             public int compare(LocalDateTime o1, LocalDateTime o2) {
@@ -138,7 +131,6 @@ public class Main {
         });
 
         // System.out.println("LAMBDA");
-
         aniversarios.sort((o1, o2) -> {
             if (o1.isAfter(o2)) {
                 return 1;
@@ -149,10 +141,7 @@ public class Main {
             }
         });
 
-
         aniversarios.forEach((aniversario) -> System.out.println(aniversario.format(FORMATTER)));
-
-
     }
 
     public static void formatConvencional(List<LocalDateTime> lista) {
@@ -174,15 +163,4 @@ public class Main {
                     "  --  DATA FINAL: " + signo.getLastDate().format(FORMATTER_SIGNO));
         }
     }
-
 }
-
-// - Consumer para data formatada (dd/MM/yyyy HH:mm:ss)
-// - Predicate para informar se a pessoa é da geração Z (nasceu entre 1995 e 2010)
-// - Supplier para informar os signos com as datas
-// - Ordernar datas de nascimento do grupo com o comparator
-
-// - Consumer, Predicate e  Supplier em três formas:
-// - Convencional
-// - Com classe anônima
-// - Com lambda

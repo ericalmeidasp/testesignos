@@ -1,4 +1,4 @@
-package org.example;
+package org.auladesignos.sistemasignoslucas.exceptions;
 
 public class SignoNaoEncontradoException extends RuntimeException {
     public SignoNaoEncontradoException() {
