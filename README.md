@@ -1,7 +1,20 @@
+### Squad 4 - Itália
+
+```bash
+Caique Vidal Freitas
+Cristiano Roberto Oliveira
+Daiane Leandro Oliveira
+Davi Carrer
+Eric Leonidas G Almeida
+Joao Lucas Cruz Lopes
+```
+
 ## Exercício:
 
 ### Criar uma base de dados (pode ser em memória) de pessoas com os seguintes atributos e extrair as informações
-
+```bash
+org.auladesignos.desafiojuliano.desafiotarefa.Desafio03OutubroApplication.java
+```
 ### Atributos
 - Nome
 - Cidade de nascimento
@@ -19,6 +32,10 @@
 6. Calcular a idade média e total das pessoas
 
 #### SIGNOS
+
+```bash
+org.auladesignos.sistemasignoslucas.SistemaSignosApplication.java
+```
 
 Você foi contratado para desenvolver o novo sistema de mapa astral de um grande banco.
 Esse mapa astral não segue totalmente o padrão convencional, porque a empresa decidiu criar o seu próprio com algumas especificações que seguem abaixo:
