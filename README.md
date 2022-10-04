@@ -25,11 +25,37 @@ Consumer para data formatada (dd/MM/yyyy HH:mm:ss)
 Predicate para informar se a pessoa é da geração Z (nasceu entre 1995 e 2010)
 Supplier para informar os signos com as datas
 Ordernar datas de nascimento com comparator
-A entrega pode ser feita através de arquivo anexo ou disponibilização pelo github, basta colar o link do projeto. Não esqueçam de informar os integrantes do grupo.
+A entrega pode ser feita através de arquivo anexo ou disponibilização pelo github, basta colar o link do projeto. Não
+esqueçam de informar os integrantes do grupo.
+
+## Exercício 2 em AULA, Em GRUPO.
+
+### Criar uma base de dados (pode ser em memória) de pessoas com os seguintes atributos e extrair as informações
+
+```bash
+main class
+org.auladesignos.desafiojuliano.desafiotarefa.Desafio03OutubroApplication.java
+```
+
+### Atributos
+
+- Nome
+- Cidade de nascimento
+- Data de nascimento
+- Signo (com base na data de nascimento)
+- Idade (com base na data de nascimento)
+- Geração (X, Y, Z ou Boomer, com base na data de nascimento)
 
 
+1. Obter a lista de pessoas que são do signo X e tem mais de Y anos.
+2. Obter a lista e a quantidade de pessoas que são menor e maior de idade
+3. Obter a lista de pessoas que pertencem a geração {}
+4. Obter a lista de todas as pessoas e informar a idade delas na próxima copa do mundo
+5. Obter a pessoa mais velha e mais nova
+6. Calcular a idade média e total das pessoas
 
-## SIGNOS # MAPA ASTRAL
+# SIGNOS # MAPA ASTRAL
+
 #### Atividade Individual
 
 ```bash
@@ -38,10 +64,11 @@ org.auladesignos.sistemasignoslucas.SistemaSignosApplication.java
 ```
 
 Você foi contratado para desenvolver o novo sistema de mapa astral de um grande banco.
-Esse mapa astral não segue totalmente o padrão convencional, porque a empresa decidiu criar o seu próprio com algumas especificações que seguem abaixo:
+Esse mapa astral não segue totalmente o padrão convencional, porque a empresa decidiu criar o seu próprio com algumas
+especificações que seguem abaixo:
 
-
-Você deve criar um método que receba a data/hora de nascimento e local de nascimento de uma pessoa. (Pode usar Scanner, se quiser, mas não é obrigatório)
+Você deve criar um método que receba a data/hora de nascimento e local de nascimento de uma pessoa. (Pode usar Scanner,
+se quiser, mas não é obrigatório)
 Baseado nessas informações, a equipe espera que você imprima:
 
 - A idade
@@ -61,27 +88,4 @@ Baseado nessas informações, a equipe espera que você imprima:
         - Se a pessoa nasceu em São Paulo (não importa o horário), deve retornar "Gandalf"
         - Em qualquer outro caso, deve retornar: "Em construção"
 
-
-
-
-## Exercício em AULA, Em Grupo.
-### Criar uma base de dados (pode ser em memória) de pessoas com os seguintes atributos e extrair as informações
-```bash
-main class
-org.auladesignos.desafiojuliano.desafiotarefa.Desafio03OutubroApplication.java
-```
-### Atributos
-- Nome
-- Cidade de nascimento
-- Data de nascimento
-- Signo (com base na data de nascimento)
-- Idade (com base na data de nascimento)
-- Geração (X, Y, Z ou Boomer, com base na data de nascimento)
-
-
-1. Obter a lista de pessoas que são do signo X e tem mais de Y anos.
-2. Obter a lista e a quantidade de pessoas que são menor e maior de idade
-3. Obter a lista de pessoas que pertencem a geração {}
-4. Obter a lista de todas as pessoas e informar a idade delas na próxima copa do mundo
-5. Obter a pessoa mais velha e mais nova
-6. Calcular a idade média e total das pessoas
+    
