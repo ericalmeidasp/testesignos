@@ -56,7 +56,7 @@ org.auladesignos.desafiojuliano.desafiotarefa.Desafio03OutubroApplication.java
 
 # SIGNOS # MAPA ASTRAL
 
-#### Atividade Individual
+### Atividade Individual
 
 ```bash
 main class
