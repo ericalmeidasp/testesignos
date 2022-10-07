@@ -3,8 +3,11 @@ package org.auladesignos.sistemasignoslucas;
 import org.auladesignos.sistemasignoslucas.exceptions.SignoLunarNaoEncontradoException;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class SistemaSignosApplication {
+
+    public final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm");
 
     public static void main(String[] args) {
         System.out.println("SIGNOS");
@@ -44,6 +47,16 @@ public class SistemaSignosApplication {
 
         System.out.println("NASCEU EM ANO BISSEXTO: ");
         System.out.println(Year.isLeap(dataHoraLocalNascimentoLucas.getYear()));
+
+        System.out.println();
+
+        System.out.println("DATA DE NASCIMENTO: ");
+        System.out.println(dataHoraLocalNascimentoLucas.format(FORMATTER));
+
+        System.out.println();
+
+        System.out.println("TimeZone do Local de nascimento: ");
+        System.out.println(dataHoraLocalNascimentoLucas.getZone());
 
     }
 
